@@ -72,3 +72,8 @@
     color: white;
     background-color: black;
 }
+
+.account-input {
+    width: 200px;
+    padding: 5px;
+}

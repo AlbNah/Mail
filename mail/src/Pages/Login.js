@@ -24,6 +24,8 @@ class Login extends Component {
       password: "",
     }
     this.myStorage = window.localStorage;
+    this.messageRef = React.createRef('')
+    this.toRef = React.createRef('')
   }
 
   loginChange = (event) => {
@@ -52,27 +54,47 @@ class Login extends Component {
     })
   }
 
+  sendMessage = (login) => {
+    const message = this.messageRef.current.value;
+    const user = JSON.parse(this.myStorage.getItem(this.toRef.current.value)) ;
+    if(user && message) {
+      const object = user;
+      this.myStorage.removeItem(this.toRef.current.value);
+      object.messages.push({from: login, message: message})
+      this.myStorage.setItem(this.toRef.current.value, JSON.stringify(object));
+      this.toRef.current.value = '';
+      this.messageRef.current.value = '';
+    }
+  }
+
   loginAcc = () => {
     const login = this.state.login;
     const password = this.state.password;
-    if(JSON.parse(this.myStorage.getItem(login)).password === password) {
-      const messages = JSON.parse(this.myStorage.getItem(login)).messages;
-      this.setState({
-        main:
-          <Card className={classes["account"]}>
-              <Card className={classes["account-div"]}>
-                {login}
-                <Button onClick={this.logOut} className={classes["logout"]}>Log out</Button>
-              </Card>
-              <Card className={classes["account-div"]}>
-                {messages.map(el => {
-                 return (
-                 <Text key={Math.random()}>From: {el.from} | Message: {el.message} </Text>
-                 )
-                })}
-              </Card>
-          </Card>
-      })
+    if(this.myStorage.getItem(login)) {
+      if(JSON.parse(this.myStorage.getItem(login)).password === password) {
+        const messages = JSON.parse(this.myStorage.getItem(login)).messages;
+        this.setState({
+          main:
+            <Card className={classes["account"]}>
+                <Card className={classes["account-div"]}>
+                  <Text>{login} </Text> <Br />
+                  <Input myRef={this.toRef} className={classes["account-input"]} type="text" placeholder="To" /> <Br />
+                  <Input myRef={this.messageRef} className={classes["account-input"]} type="text" placeholder="Example: Hi, how are you?" /> <Br />
+                  <Button className={classes["button"]} onClick={() => this.sendMessage(login)}>Send</Button> <Br />
+                  <Button onClick={this.logOut} className={classes["logout"]}>Log out</Button> 
+                </Card>
+                <Card className={classes["account-div"]}>
+                  {messages.map(el => {
+                   return (
+                   <Text key={Math.random()}>From: {el.from} | Message: {el.message} </Text>
+                   )
+                  })}
+                </Card>
+            </Card>,
+            login: '',
+            password: ''
+        })
+      }
     }
   }
   

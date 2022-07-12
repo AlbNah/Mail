@@ -15,10 +15,6 @@ import Login from './Pages/Login';
 import Write from './Pages/Write';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
       return(
         <Wrapper>
