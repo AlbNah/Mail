@@ -7,6 +7,7 @@ import Text from '../Components/Text/Text'
 import classes from '../UI/Global.module.css'
 import Br from '../Components/Br/Br'
 
+
 class Registration extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +24,8 @@ class Registration extends Component {
                 messages: []
             }
             this.myStorage.setItem(login, JSON.stringify(object))
+            this.logRex.current.value = '';
+            this.passRex.current.value = '';
         }
     }
     
@@ -34,7 +37,7 @@ class Registration extends Component {
                     <Text className={classes["title"]}>Register</Text> <Br />
                     <Input myRef={this.logRex} className={classes["input"]} type="text" placeholder="Login" />  <Br />
                     <Input myRef={this.passRex} className={classes["input"]} type="password" placeholder="Password" /> <Br />
-                    <Button onClick={this.createUser} className={classes["button"]}>Register</Button>
+                    <Button onClick={this.createUser} className={classes["button"]}>Register</Button> 
                 </Card>
             </Card>
         </Wrapper>

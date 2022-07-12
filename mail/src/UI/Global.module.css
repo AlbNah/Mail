@@ -49,3 +49,26 @@
     background-color: black;
 }
 
+.account {
+    margin-top: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+}
+
+.logout {
+    padding: 8px 16px;
+    margin-top: 10px;
+}
+
+.logout:hover {
+    cursor: pointer;
+    color: white;
+    background-color: black;
+}
