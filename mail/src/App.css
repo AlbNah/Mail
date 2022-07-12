@@ -3,3 +3,12 @@
   margin: 0;
   padding: 0;
 }
+
+.menu-li {
+  color: white;
+  text-decoration: none;
+}
+
+.active {
+  color: blueviolet;
+}

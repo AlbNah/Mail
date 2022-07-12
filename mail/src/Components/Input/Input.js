@@ -7,6 +7,7 @@ class Input extends Component {
         className={this.props.className}
         type={this.props.type}
         ref={this.props.myRef}
+        placeholder={this.props.placeholder}
       />
     )
   }

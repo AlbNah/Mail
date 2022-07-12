@@ -1,0 +1,51 @@
+.button {
+    padding: 8px 16px;
+    width: 200px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nested {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px 15px 10px;
+    border: 1px solid red;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 36px;
+    text-align: center;
+}
+
+.input {
+    width: 90%;
+    padding: 5px;
+}
+
+.menu {
+    display: flex;
+    position: fixed;
+    top: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 10vh;
+    width: 100%;
+    list-style-type: none;
+    background-color: black;
+}
+
