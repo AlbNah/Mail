@@ -77,3 +77,7 @@
     width: 200px;
     padding: 5px;
 }
+
+.messages-ul {
+    list-style-type: none;
+}

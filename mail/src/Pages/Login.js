@@ -6,6 +6,8 @@ import Input from '../Components/Input/Input'
 import Text from '../Components/Text/Text'
 import classes from '../UI/Global.module.css'
 import Br from '../Components/Br/Br'
+import List from '../Components/List/List'
+import Listitem from '../Components/Listitem/Listitem'
 
 class Login extends Component {
   constructor(props) {
@@ -50,7 +52,9 @@ class Login extends Component {
             <Input onChange={this.passwordChange} className={classes["input"]} type="password" placeholder="Password" />  <Br />
             <Button onClick={this.loginAcc} className={classes["button"]}>Login</Button>
       </Card>
-      </Card>
+      </Card>,
+      login: '',
+      password: ''
     })
   }
 
@@ -66,6 +70,10 @@ class Login extends Component {
       this.messageRef.current.value = '';
     }
   }
+
+  // deleteMessage = (id) => {
+    
+  // }
 
   loginAcc = () => {
     const login = this.state.login;
@@ -84,16 +92,21 @@ class Login extends Component {
                   <Button onClick={this.logOut} className={classes["logout"]}>Log out</Button> 
                 </Card>
                 <Card className={classes["account-div"]}>
+                  <List className={classes["messages-ul"]}>
                   {messages.map(el => {
                    return (
-                   <Text key={Math.random()}>From: {el.from} | Message: {el.message} </Text>
+                   <Listitem key={Math.random()}>From: {el.from} | Message: {el.message}</Listitem>
                    )
                   })}
+                  </List>   
                 </Card>
             </Card>,
-            login: '',
-            password: ''
         })
+        setTimeout(() => {
+          this.toRef.current.value = '';
+          this.messageRef.current.value = '';
+        }, 0);
+        
       }
     }
   }
